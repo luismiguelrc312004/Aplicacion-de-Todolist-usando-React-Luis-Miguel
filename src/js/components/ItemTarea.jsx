@@ -1,18 +1,31 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import "./ItemTarea.css"
 
-function ItemTarea({tarea, tareaPendiente, funcionalidad, index}) {
+function ItemTarea({ tarea, eliminarTarea }) {
 
-    const [mostrar, setMostrar] = useState(false);
+	const [mostrar, setMostrar] = useState(false);
 
-    return (
-        <li>
-            <div onMouseEnter={() => setMostrar(true)} onMouseLeave={() => setMostrar(false)}>
-                {tarea}
-                {mostrar && <span className="fs-4 float-end cursor-pointer" onClick={() => funcionalidad(tareaPendiente.filter((t, currentindex) => index != currentindex))}>❌</span>}
-            </div>
-        </li>
-    )
+	return (
+		<li>
+			<div
+				onMouseEnter={() => setMostrar(true)}
+				onMouseLeave={() => setMostrar(false)}
+			>
+
+				{tarea.label}
+
+				{mostrar && (
+					<span
+						className="fs-4 float-end cursor-pointer"
+						onClick={() => eliminarTarea(tarea.id)}
+					>
+						❌
+					</span>
+				)}
+
+			</div>
+		</li>
+	)
 }
 
 export default ItemTarea

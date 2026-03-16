@@ -1,16 +1,20 @@
 import React from 'react'
-import ItemTarea from './ItemTarea';
+import ItemTarea from './ItemTarea'
 import "./ListaTareas.css"
 
-function ListaTareas({tareaPendiente, funcionalidad}) {
+function ListaTareas({ tareaPendiente, eliminarTarea }) {
+
   return (
     <div>
-        <ul>
-            {tareaPendiente.map((tarea, index) => (
-              <ItemTarea key={index} tarea={tarea} tareaPendiente={tareaPendiente} funcionalidad={funcionalidad} index={index}/>
-            ))}
-
-          </ul>
+      <ul>
+        {tareaPendiente.map((tarea) => (
+          <ItemTarea
+            key={tarea.id}
+            tarea={tarea}
+            eliminarTarea={eliminarTarea}
+          />
+        ))}
+      </ul>
     </div>
   )
 }
